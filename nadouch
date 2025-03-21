@@ -1,0 +1,13 @@
+from tkinter import *
+fenetre = Tk()
+bouton = Button(fenetre, text="Fermer", command=fenetre.quit)
+bouton.pack()
+canvas = Canvas(fenetre, width=800, height=800, background='pink')
+ligne1 = canvas.create_line(200, 0, 200, 800)
+ligne2 = canvas.create_line(0, 200, 800, 200)
+ligne3 = canvas.create_line(400, 0, 400, 800)
+ligne4 = canvas.create_line(0, 400, 800, 400)
+ligne5 = canvas.create_line(600, 0, 600, 800)
+ligne6 = canvas.create_line(0, 600, 800, 600)
+canvas.pack()
+fenetre.mainloop()
