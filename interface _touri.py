@@ -33,7 +33,7 @@ def deplacer(direction, grid):
         game_over()
 
 
-#fusion des cellules
+#fusionner des cellules
 
 def merge(ligne, taille_grille):
 
@@ -41,7 +41,7 @@ def merge(ligne, taille_grille):
     
     
     for i in range(len(nv_ligne) - 1):  #dernière case
-        if nv_ligne[i] == nv_ligne[i + 1]: #fusionner les valeurs égales
+        if nv_ligne[i] == nv_ligne[i + 1]: #fusionner les valeurs pareil pourqu'il y est multiplication 
             nv_ligne[i] *= 2  #multiplier le nombre par 2
             nv_ligne[i + 1] = 0  #chager de cellule
     
@@ -58,11 +58,14 @@ def merge(ligne, taille_grille):
 #zip => transposer des cellules !!!!!
 
 #Bouton de controle
+def move():
+    #...
+
 def bouton_controle(root):
 button_play = tk.Button(root, text="Play")
 button_play.grid(row=1, column=0, columnspan=4, sticky="nsew")  #Nord/Sud/Est/West
 root.bind("<Left>", lambda event: move("left"))
-root.bind("<Right>", lambda event: move("right"))
+root.bind("<Right>", lambda event: move("right"))  #bind => associer mvt avec clavier
 root.bind("<Up>", lambda event: move("up"))
 root.bind("<Down>", lambda event: move("down"))
 
