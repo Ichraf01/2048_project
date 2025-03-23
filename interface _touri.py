@@ -3,7 +3,7 @@ import Tkinter as Tk
 #Déplacement d'une cellule NSEW
 def game_over(root):
     
-    root.unbind("<Left>")
+    root.unbind("<Left>")  #unbind => plus possible de bouger dans les sens L.R.U.D  => Game Over
     root.unbind("<Right>")  # Désactive les événements de touche (flèches directionnelles)
     root.unbind("<Up>")
     root.unbind("<Down>")
@@ -73,19 +73,4 @@ bouton_controle()
 
 
 
-
-
-# Pour afficher les tuiles dans la matrice 4x4 
-taille_grille = 4 # 4x4
-
-for i in range(taille_grille):
-    ligne = []
-    for j in range(taille_grille):
-        cell = tk.Label(self.frame, text="", width=5, height=2)
-        cell.grid(row=i, column=j, padx=5, pady=5)
-        ligne.append(cell)
-
-    if __name__ == "__main__":
-        root = tk.Tk()
-    root.mainloop()
 
