@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import tkinter as tk
 import random
 
@@ -82,3 +83,5 @@ class Game2048:
 root = tk.Tk()
 game = Game2048(root)
 root.mainloop()
+=======
+>>>>>>> 0fdd39711d2432d600395849feea07298d3ea39b
