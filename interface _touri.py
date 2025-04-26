@@ -16,7 +16,7 @@ def game_over(root):
     )
     game_over_label.grid(row=2, column=0, columnspan=4, sticky="nsew")
     #tk.Label ➔ crée une étiquette (un petit cadre avec du texte dedans).
-    #self.root ➔ c'est la fenêtre principale où tu places ce label.
+    #root ➔ c'est la fenêtre principale où tu places ce label.
     #text="Game Over" ➔ le texte affiché.
     #font=("Helvetica", 24, "bold") ➔ police d'écriture : Helvetica, taille 24, en gras.
     #background="#BBADA0" ➔ couleur de fond du label (un peu marron clair, comme dans 2048).
