@@ -2,18 +2,41 @@ import tkinter as Tk
 
 #Déplacement d'une cellule NSEW
 def game_over(root):
-    
-    root.unbind("<Left>")  #unbind => plus possible de bouger dans les sens L.R.U.D  => Game Over
-    root.unbind("<Right>")  # Désactive les événements de touche (flèches directionnelles)
+    root.unbind("<Left>")   # On désactive les touches
+    root.unbind("<Right>")
     root.unbind("<Up>")
     root.unbind("<Down>")
     
-    
-    game_over_label = Tk.Label(root,text="Game Over") # Crée un label "Game Over" et l'affiche
-    game_over_label.pack()
+    game_over_label = tk.Label(
+        root,
+        text="Game Over",
+        font=("Helvetica", 24, "bold"),
+        background="#BBADA0",
+        foreground="red"
+    )
+    game_over_label.grid(row=2, column=0, columnspan=4, sticky="nsew")
+    #tk.Label ➔ crée une étiquette (un petit cadre avec du texte dedans).
+    #self.root ➔ c'est la fenêtre principale où tu places ce label.
+    #text="Game Over" ➔ le texte affiché.
+    #font=("Helvetica", 24, "bold") ➔ police d'écriture : Helvetica, taille 24, en gras.
+    #background="#BBADA0" ➔ couleur de fond du label (un peu marron clair, comme dans 2048).
+    #foreground="red" ➔ couleur du texte (rouge pour attirer l'attention).
+    #grid(row=2, column=0, columnspan=4, sticky="nsew") ➔ place le label au centre de la fenêtre, il prend 4 colonnes.
 
 
-def deplacer(direction, grid):
+def can_move(grid):
+    for row in grid:
+        for i in range(len(row) - 1):
+            if row[i] == row[i + 1] or row[i] == 0 or row[i + 1] == 0:
+                return True
+    for col in zip(*grid):   #zip(*grid) transforme les lignes en colonnes pour pouvoir les parcourir de la même façon.
+        for i in range(len(col) - 1):
+            if col[i] == col[i + 1] or col[i] == 0 or col[i + 1] == 0:
+                return True
+    return False
+
+#Bouton de controle 
+def move(direction, grid):
 
     if direction == "left":
         grid[:] = [merge(row) for row in grid]
@@ -29,50 +52,18 @@ def deplacer(direction, grid):
         grid[:] = list(map(list, zip(*grid)))  # Re-transpose
     
     
-    if not deplacer(grid):
+    if not move(grid):
         game_over()
 
-
-#fusionner des cellules
-
-def merge(ligne, taille_grille):
-
-    nv_ligne= [value for value in ligne if value != 0]   # Supprime les zéros de la ligne
-    
-    
-    for i in range(len(nv_ligne) - 1):  #dernière case
-        if nv_ligne[i] == nv_ligne[i + 1]: #fusionner les valeurs pareil pourqu'il y est multiplication 
-            nv_ligne[i] *= 2  #multiplier le nombre par 2
-            nv_ligne[i + 1] = 0  #chager de cellule
-    
-    
-    nv_ligne = [value for value in nv_ligne if value != 0] # Supp encore les zéros après la fusion
-    
-    
-    return nv_ligne + [0] * (taille_grille - len(nv_ligne)) # Complète la ligne avec des zéros pour atteindre la taille de la grille
 
 
         
 #map => executer une fonction sur l'ensemble 
-# self => grille qui ca contenir une information mais que pour class 
+# self => grille qui ca contenir une information
 #zip => transposer des cellules !!!!!
 
 #Bouton de controle
-def move():
-    def move(grid, direction):
-    if direction == "left":
-        grid = [merge(row) for row in grid]
-    elif direction == "right":
-        grid = [merge(row[::-1])[::-1] for row in grid]
-    elif direction == "up":
-        grid = list(map(list, zip(*[merge(row) for row in zip(*grid)])))
-    elif direction == "down":
-        grid = list(map(list, zip(*[merge(row[::-1])[::-1] for row in zip(*grid)])))
-    add_tile(grid)
-    update_ui(grid)
-    if not can_move(grid):
-        game_over()
-    return grid
+
 
 def bouton_controle(root):
     button_play = Tk.Button(root, text="Play")
@@ -84,8 +75,6 @@ def bouton_controle(root):
     
 
 bouton_controle()
-
-
 
 
 
