@@ -122,13 +122,7 @@ def game_over():
     root.unbind("<Right>")
     root.unbind("<Up>")
     root.unbind("<Down>")
-    game_over_label = tk.Label(
-        root,
-        text="GAME OVER",
-        font=("Helvetica", 24, "bold"),
-        bg="#BBADA0",
-        fg="red"
-    )
+    game_over_label = tk.Label(root,text="GAME OVER",font=("Helvetica", 24, "bold"),bg="#BBADA0",fg="red")
     game_over_label.place(relx=0.5, rely=0.5, anchor="center")  # Center the label
 
 
