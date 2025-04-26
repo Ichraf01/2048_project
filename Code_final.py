@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import tkinter as tk
 import random
 
@@ -142,3 +143,7 @@ root.bind("<Up>", lambda e: move("up"))
 root.bind("<Down>", lambda e: move("down"))
 
 root.mainloop()
+=======
+
+
+>>>>>>> 6b365e0772bb0ae77dba3a2162aefd077efbcf1e
