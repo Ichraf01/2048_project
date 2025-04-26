@@ -59,7 +59,20 @@ def merge(ligne, taille_grille):
 
 #Bouton de controle
 def move():
-    #...
+    def move(grid, direction):
+    if direction == "left":
+        grid = [merge(row) for row in grid]
+    elif direction == "right":
+        grid = [merge(row[::-1])[::-1] for row in grid]
+    elif direction == "up":
+        grid = list(map(list, zip(*[merge(row) for row in zip(*grid)])))
+    elif direction == "down":
+        grid = list(map(list, zip(*[merge(row[::-1])[::-1] for row in zip(*grid)])))
+    add_tile(grid)
+    update_ui(grid)
+    if not can_move(grid):
+        game_over()
+    return grid
 
 def bouton_controle(root):
     button_play = Tk.Button(root, text="Play")
