@@ -1,4 +1,4 @@
-import Tkinter as Tk
+import tkinter as Tk
 
 #Déplacement d'une cellule NSEW
 def game_over(root):
@@ -62,14 +62,17 @@ def move():
     #...
 
 def bouton_controle(root):
-button_play = tk.Button(root, text="Play")
-button_play.grid(row=1, column=0, columnspan=4, sticky="nsew")  #Nord/Sud/Est/West
-root.bind("<Left>", lambda event: move("left"))
-root.bind("<Right>", lambda event: move("right"))  #bind => associer mvt avec clavier
-root.bind("<Up>", lambda event: move("up"))
-root.bind("<Down>", lambda event: move("down"))
+    button_play = Tk.Button(root, text="Play")
+    button_play.grid(row=1, column=0, columnspan=4, sticky="nsew")  #Nord/Sud/Est/West
+    root.bind("<Left>", lambda event: move("left"))
+    root.bind("<Right>", lambda event: move("right"))  #bind => associer mvt avec clavier
+    root.bind("<Up>", lambda event: move("up")) #lambda => une méthode pour ecrire mes fonctions sous formes linéaire
+    root.bind("<Down>", lambda event: move("down"))
+    
 
 bouton_controle()
+
+
 
 
 
