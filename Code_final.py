@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import tkinter as tk
 import random
 
@@ -35,7 +34,7 @@ cells = []
 grid_values = [[0 for _ in range(TAILLE)] for _ in range(TAILLE)]
 
 
-def update_display():
+def renouveler():
     for i in range(TAILLE):
         for j in range(TAILLE):
             val = grid_values[i][j]
@@ -64,7 +63,7 @@ for i in range(TAILLE):
     cells.append(row)
 
 
-def add_random_tile():
+def remp_alea():
     empty = [(i, j) for i in range(TAILLE) for j in range(TAILLE) if grid_values[i][j] == 0]
     if empty:
         i, j = random.choice(empty)
@@ -89,8 +88,8 @@ def move(direction):
 
     # Only continue if grid changed
     if grid_values != original_grid:
-        add_random_tile()
-        update_display()
+        remp_alea()
+        renouveler()
 
     # Always check game over after move
     if not can_move():
@@ -134,8 +133,8 @@ def game_over():
 
 # Initialize game
 for _ in range(2):
-    add_random_tile()
-update_display()
+    remp_alea()
+renouveler()
 
 root.bind("<Left>", lambda e: move("left"))
 root.bind("<Right>", lambda e: move("right"))
@@ -143,7 +142,3 @@ root.bind("<Up>", lambda e: move("up"))
 root.bind("<Down>", lambda e: move("down"))
 
 root.mainloop()
-=======
-
-
->>>>>>> 6b365e0772bb0ae77dba3a2162aefd077efbcf1e
