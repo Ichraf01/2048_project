@@ -141,5 +141,4 @@ root.bind("<Right>", lambda e: move("right"))
 root.bind("<Up>", lambda e: move("up"))
 root.bind("<Down>", lambda e: move("down"))
 
-root.mainloop()
-
+root.mainloop() # lancer la fenetre Tk 
