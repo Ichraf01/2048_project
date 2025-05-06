@@ -133,12 +133,20 @@ def game_over():
     game_over_label = tk.Label(root, text="GAME OVER", font=("Helvetica", 24, "bold"), bg="#BBADA0", fg="red")
     game_over_label.place(relx=0.5, rely=0.5, anchor="center")  # Center the label
 
+def you_win():
+    root.unbind("<Left>")
+    root.unbind("<Right>")
+    root.unbind("<Up>")
+    root.unbind("<Down>")
+    win_label = tk.Label(root, text="YOU WIN", font=("Helvetica", 24, "bold"), bg="#BBADA0", fg="green")
+    win_label.place(relx=0.5, rely=0.5, anchor="center")  # Center the label    
 
 # initialization du jeu
 # ichraf
 for _ in range(2):
     remp_alea()
 renouveler()
+
 # touria
 root.bind("<Left>", lambda e: move("left"))
 root.bind("<Right>", lambda e: move("right"))
