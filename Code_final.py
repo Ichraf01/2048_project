@@ -98,9 +98,14 @@ def move(direction):
     if grid_values != original_grid:
         remp_alea()
         renouveler()
+    #Ichraf
+    if any(2048 in row for row in grid_values):
+        you_win()
+        return
 
     if not can_move():
         game_over()
+
 
 # touria
 
@@ -140,6 +145,8 @@ def you_win():
     root.unbind("<Down>")
     win_label = tk.Label(root, text="YOU WIN", font=("Helvetica", 24, "bold"), bg="#BBADA0", fg="green")
     win_label.place(relx=0.5, rely=0.5, anchor="center")  # Center the label    
+
+
 
 # initialization du jeu
 # ichraf
