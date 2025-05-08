@@ -103,6 +103,9 @@ def move(direction):
         remp_alea()
         renouveler()
     #Ichraf
+    # Vérifie si la valeur 2048 est présente dans une des lignes de la grille.
+    # Si c’est le cas, cela signifie que le joueur a gagné,
+    # donc on appelle la fonction you_win() et on arrête la suite du code avec return.
     if any(2048 in row for row in grid_values):
         you_win()
         return
