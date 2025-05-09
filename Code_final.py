@@ -181,6 +181,8 @@ def rejouer():
     global grid_values
     # Supprime les messages "GAME OVER" ou "YOU WIN" s'ils existent
     for widget in root.winfo_children():
+        #voir si c une instance d'une classe ou une sous classe
+        # et si le texte est "GAME OVER" ou "YOU WIN"
         if isinstance(widget, tk.Label) and widget.cget("text") in ["GAME OVER", "YOU WIN"]:
             widget.destroy()
 
