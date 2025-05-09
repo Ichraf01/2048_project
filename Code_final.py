@@ -28,7 +28,9 @@ def merge(ligne, taille_grille):
 
 # creation de notre fenetre tkinter
 root = tk.Tk()
-root.geometry("400x400")
+root.attributes('-fullscreen',True)
+# lier la touche Escape à la fermeture de la fenêtre
+root.bind("<Escape>", lambda e: root.destroy())
 frame = tk.Frame(root, bg="#BBADA0")
 frame.pack(expand=True)
 # creation de la grille
