@@ -200,9 +200,6 @@ def rejouer():
     root.bind("<Up>", lambda e: move("up"))
     root.bind("<Down>", lambda e: move("down"))
 
-for widget in root.winfo_children():
-    if isinstance(widget, tk.Label) and widget.cget("text") in ["GAME OVER", "YOU WIN"]:
-        widget.destroy()
 
 rejouer_button = tk.Button(root, text="Rejouer", font=("Helvetica", 16, "bold"), bg="#8F7A66", fg="white", command=rejouer)
 rejouer_button.pack(pady=10)  # Place le bouton en bas avec un espacement vertical
