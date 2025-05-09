@@ -176,4 +176,33 @@ root.bind("<Right>", lambda e: move("right"))
 root.bind("<Up>", lambda e: move("up"))
 root.bind("<Down>", lambda e: move("down"))
 
+
+def rejouer():
+    global grid_values
+    # Supprime les messages "GAME OVER" ou "YOU WIN" s'ils existent
+    for widget in root.winfo_children():
+        if isinstance(widget, tk.Label) and widget.cget("text") in ["GAME OVER", "YOU WIN"]:
+            widget.destroy()
+
+    # Réinitialise la grille avec des zéros
+    grid_values = [[0 for _ in range(TAILLE)] for _ in range(TAILLE)]
+    # Place deux tuiles aléatoires au début
+    for _ in range(2):
+        remp_alea()
+    # Met à jour l'affichage de la grille
+    renouveler()
+
+    # Réactive les touches fléchées
+    root.bind("<Left>", lambda e: move("left"))
+    root.bind("<Right>", lambda e: move("right"))
+    root.bind("<Up>", lambda e: move("up"))
+    root.bind("<Down>", lambda e: move("down"))
+
+for widget in root.winfo_children():
+    if isinstance(widget, tk.Label) and widget.cget("text") in ["GAME OVER", "YOU WIN"]:
+        widget.destroy()
+
+rejouer_button = tk.Button(root, text="Rejouer", font=("Helvetica", 16, "bold"), bg="#8F7A66", fg="white", command=rejouer)
+rejouer_button.pack(pady=10)  # Place le bouton en bas avec un espacement vertical
+
 root.mainloop()
